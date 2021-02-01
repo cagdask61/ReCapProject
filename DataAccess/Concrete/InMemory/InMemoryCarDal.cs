@@ -24,9 +24,9 @@ namespace DataAccess.Concrete.InMemory
                 new Car(){Id=8,BrandId=6,ColorId=4,DailyPrice=300,ModelYear=2013,Description="Kullanılmaya hazır"},
                 new Car(){Id=9,BrandId=7,ColorId=5,DailyPrice=400,ModelYear=1999,Description="Kullanılmaya hazır"},
                 new Car(){Id=10,BrandId=8,ColorId=5,DailyPrice=500,ModelYear=2000,Description="Kullanılmaya hazır"},
-                new Car(){Id=11,BrandId=9,ColorId=6,DailyPrice=40,ModelYear=20015,Description="Arabada kaza var ve konforu yok. Benzin Fazla yakıyor. virajlarda sıkıntılı"},
+                new Car(){Id=11,BrandId=9,ColorId=6,DailyPrice=40,ModelYear=2015,Description="Arabada kaza var ve konforu yok. Benzin Fazla yakıyor. virajlarda sıkıntılı"},
                 new Car(){Id=12,BrandId=1,ColorId=6,DailyPrice=100,ModelYear=2020,Description="Bu aracın bilgisi yok"},
-                new Car(){Id=13,BrandId=2,ColorId=7,DailyPrice=200,ModelYear=20012,Description="Arabada sorunlar var ama yola çıkmaya hazır."},
+                new Car(){Id=13,BrandId=2,ColorId=7,DailyPrice=200,ModelYear=2012,Description="Arabada sorunlar var ama yola çıkmaya hazır."},
                 new Car(){Id=14,BrandId=3,ColorId=7,DailyPrice=25,ModelYear=2005,Description="Arabada kaza yok ve konforlu. Benzin Fazla yakıyor."},
                 new Car(){Id=15,BrandId=4,ColorId=7,DailyPrice=50,ModelYear=2019,Description="Arabada kaza var ve konforu yok. Benzin Fazla yakıyor."}
             };
