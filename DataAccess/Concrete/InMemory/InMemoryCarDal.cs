@@ -17,18 +17,18 @@ namespace DataAccess.Concrete.InMemory
                 new Car(){Id=1,BrandId=1,ColorId=1,DailyPrice=150,ModelYear=2004,Description="Arabada kaza yok ve konforlu. Benzin Fazla yakıyor."},
                 new Car(){Id=2,BrandId=2,ColorId=1,DailyPrice=250,ModelYear=2010,Description="Arabada kaza yok ve konforlu. Benzin Az yakıyor."},
                 new Car(){Id=3,BrandId=3,ColorId=2,DailyPrice=100,ModelYear=2000,Description="Araba 100 geçince sarsılıyor"},
-                new Car(){Id=3,BrandId=4,ColorId=2,DailyPrice=90,ModelYear=2005,Description="Ön tekerinde sorun var"},
-                new Car(){Id=3,BrandId=5,ColorId=3,DailyPrice=200,ModelYear=2006,Description="Araba sadece 10 gün kiralanabilir"},
-                new Car(){Id=4,BrandId=5,ColorId=3,DailyPrice=50,ModelYear=2007,Description="Araç sorunlu"},
-                new Car(){Id=5,BrandId=5,ColorId=4,DailyPrice=100,ModelYear=2011,Description="Araçta hız sorunu var"},
-                new Car(){Id=6,BrandId=6,ColorId=4,DailyPrice=300,ModelYear=2013,Description="Kullanılmaya hazır"},
-                new Car(){Id=7,BrandId=7,ColorId=5,DailyPrice=400,ModelYear=1999,Description="Kullanılmaya hazır"},
-                new Car(){Id=8,BrandId=8,ColorId=5,DailyPrice=500,ModelYear=2000,Description="Kullanılmaya hazır"},
-                new Car(){Id=9,BrandId=9,ColorId=6,DailyPrice=40,ModelYear=20015,Description="Arabada kaza var ve konforu yok. Benzin Fazla yakıyor. virajlarda sıkıntılı"},
-                new Car(){Id=10,BrandId=1,ColorId=6,DailyPrice=100,ModelYear=2020,Description="Bu aracın bilgisi yok"},
-                new Car(){Id=11,BrandId=2,ColorId=7,DailyPrice=200,ModelYear=20012,Description="Arabada sorunlar var ama yola çıkmaya hazır."},
-                new Car(){Id=12,BrandId=3,ColorId=7,DailyPrice=25,ModelYear=2005,Description="Arabada kaza yok ve konforlu. Benzin Fazla yakıyor."},
-                new Car(){Id=13,BrandId=4,ColorId=7,DailyPrice=50,ModelYear=2019,Description="Arabada kaza var ve konforu yok. Benzin Fazla yakıyor."}
+                new Car(){Id=4,BrandId=4,ColorId=2,DailyPrice=90,ModelYear=2005,Description="Ön tekerinde sorun var"},
+                new Car(){Id=5,BrandId=5,ColorId=3,DailyPrice=200,ModelYear=2006,Description="Araba sadece 10 gün kiralanabilir"},
+                new Car(){Id=6,BrandId=5,ColorId=3,DailyPrice=50,ModelYear=2007,Description="Araç sorunlu"},
+                new Car(){Id=7,BrandId=5,ColorId=4,DailyPrice=100,ModelYear=2011,Description="Araçta hız sorunu var"},
+                new Car(){Id=8,BrandId=6,ColorId=4,DailyPrice=300,ModelYear=2013,Description="Kullanılmaya hazır"},
+                new Car(){Id=9,BrandId=7,ColorId=5,DailyPrice=400,ModelYear=1999,Description="Kullanılmaya hazır"},
+                new Car(){Id=10,BrandId=8,ColorId=5,DailyPrice=500,ModelYear=2000,Description="Kullanılmaya hazır"},
+                new Car(){Id=11,BrandId=9,ColorId=6,DailyPrice=40,ModelYear=20015,Description="Arabada kaza var ve konforu yok. Benzin Fazla yakıyor. virajlarda sıkıntılı"},
+                new Car(){Id=12,BrandId=1,ColorId=6,DailyPrice=100,ModelYear=2020,Description="Bu aracın bilgisi yok"},
+                new Car(){Id=13,BrandId=2,ColorId=7,DailyPrice=200,ModelYear=20012,Description="Arabada sorunlar var ama yola çıkmaya hazır."},
+                new Car(){Id=14,BrandId=3,ColorId=7,DailyPrice=25,ModelYear=2005,Description="Arabada kaza yok ve konforlu. Benzin Fazla yakıyor."},
+                new Car(){Id=15,BrandId=4,ColorId=7,DailyPrice=50,ModelYear=2019,Description="Arabada kaza var ve konforu yok. Benzin Fazla yakıyor."}
             };
         }
 
