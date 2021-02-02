@@ -12,9 +12,11 @@ namespace ConsoleApp
             CarManager carManager = new CarManager(new InMemoryCarDal());
 
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.DarkBlue; 
 
-            //Listedeki bütün arabaları sıralama
+            carManager.GetCarAdd(new Car { Id = 16, BrandId = 9, ColorId = 2, DailyPrice = 300, ModelYear = 2020, Description = "araba sağlam" });
+            Console.WriteLine("-------------------------------------------------------------------------------------------------");
+
             foreach (var car in carManager.GetAll())
             {
                 Console.WriteLine(" - Id : " + car.Id + " - Marka Id:" + car.BrandId + " - Renk Id: " + car.ColorId + " - Günlük Kullanım ücreti : " + car.DailyPrice + " - Aracın modeli : " + car.ModelYear + " - Araba ile ilgili açıklama :  " + car.Description + Environment.NewLine);
@@ -22,7 +24,7 @@ namespace ConsoleApp
 
             Console.WriteLine("------------------------------------------------------");
 
-            //Araçların model yılına göre büyükten küçüğe sıralama 
+             
             foreach (var car in carManager.GetByModelYearDescending())
             {
                 
@@ -31,12 +33,12 @@ namespace ConsoleApp
             }
             Console.WriteLine("-------------------------------------------------------");
 
-            //Araçların günlük kullanım ücretine göre küçükten büyüğe sıralama
+
             foreach (var carX in carManager.GetByDailyPrice())
             {
                 Console.WriteLine(" - Günlük Kullanım ücreti : " + carX.DailyPrice +" - Id : " + carX.Id + " - Marka Id:" + carX.BrandId + " - Renk Id: " + carX.ColorId  + " - Aracın modeli : " + carX.ModelYear + " - Araba ile ilgili açıklama :  " + carX.Description + Environment.NewLine);
             }
-            
+
 
             
             

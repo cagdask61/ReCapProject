@@ -32,14 +32,12 @@ namespace DataAccess.Concrete.InMemory
             };
         }
 
-        //Listeye yeni araç ekleme methodu
         public void Add(Car car)
         {
             _cars.Add(car);
             Console.WriteLine(car.Id + " Id li araba eklendi");
         }
 
-        //Listedeki Id ye göre bulup silme methodu
         public void Delete(Car car)
         {
             Car carDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
@@ -47,27 +45,23 @@ namespace DataAccess.Concrete.InMemory
             Console.WriteLine(car.Id + " Id li araba silindi");
         }
 
-        //Liste
         public List<Car> GetAll()
         {
             return _cars;
         }
 
-        //Günlük araba kiralarını küçükten büyüğe sıralama methodu
         public List<Car> GetByDailyPrice()
         {
             List<Car> DailyPrice = _cars.OrderBy(c => c.DailyPrice).ToList();
             return DailyPrice;
         }
 
-        //Günlük araba kiralarını büyüğe küçüğe sıralama methodu
         public List<Car> GetByDailyPriceDescending()
         {
             List<Car> DailyPriceDescending = _cars.OrderByDescending(c => c.DailyPrice).ToList();
             return DailyPriceDescending;
         }
 
-        //Listedeki Id lere göre listeleme
         public List<Car> GetById(int Id)
         {
             return _cars.Where(c => c.Id == Id).ToList();
