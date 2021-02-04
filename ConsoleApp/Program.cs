@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EnityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
@@ -9,39 +10,21 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
 
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.DarkBlue; 
-
-            carManager.GetCarAdd(new Car { Id = 16, BrandId = 9, ColorId = 2, DailyPrice = 300, ModelYear = 2020, Description = "araba sağlam" });
-            Console.WriteLine("-------------------------------------------------------------------------------------------------");
-
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(" - Id : " + car.Id + " - Marka Id:" + car.BrandId + " - Renk Id: " + car.ColorId + " - Günlük Kullanım ücreti : " + car.DailyPrice + " - Aracın modeli : " + car.ModelYear + " - Araba ile ilgili açıklama :  " + car.Description + Environment.NewLine);
-            }
-
-            Console.WriteLine("------------------------------------------------------");
-
-             
-            foreach (var car in carManager.GetByModelYearDescending())
+            Car car1 = new Car 
             {
                 
-                Console.WriteLine(" - Aracın modeli : " + car.ModelYear + " - Id : " +car.Id+" - Marka Id:" + car.BrandId+ " - Renk Id: " +car.ColorId+ " - Günlük Kullanım ücreti : " +car.DailyPrice+  " - Araba ile ilgili açıklama :  "+car.Description + Environment.NewLine);
-                
-            }
-            Console.WriteLine("-------------------------------------------------------");
+                Id=4,BrandId = 3, ColorId = 3, CarName = "Dodge", DailyPrice=800,ModelYear=1980, Description="Dene gör ve hisset." 
+            };
 
-
-            foreach (var carX in carManager.GetByDailyPrice())
+            carManager.GetCarAdd(car1);
+            carManager.GetCarUpdate(car1);
+            carManager.GetCarDelete(car1);
+            foreach (var cars in carManager.GetAll())
             {
-                Console.WriteLine(" - Günlük Kullanım ücreti : " + carX.DailyPrice +" - Id : " + carX.Id + " - Marka Id:" + carX.BrandId + " - Renk Id: " + carX.ColorId  + " - Aracın modeli : " + carX.ModelYear + " - Araba ile ilgili açıklama :  " + carX.Description + Environment.NewLine);
+                Console.WriteLine(" + Araba ismi : "+ cars.CarName +" + Araba'nın açıklaması : "+cars.Description);
             }
-
-
-            
-            
         }
     }
 }

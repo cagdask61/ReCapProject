@@ -20,34 +20,31 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetByDailyPrice()
-        {
-            return _carDal.GetByDailyPrice();
-        }
-
-        public List<Car> GetByDailyPriceDescending()
-        {
-            return _carDal.GetByDailyPriceDescending();
-        }
-
-        public List<Car> GetById(int Id)
-        {
-            return _carDal.GetById(Id);
-        }
-
-        public List<Car> GetByModelYear()
-        {
-            return _carDal.GetByModelYear();
-        }
-
-        public List<Car> GetByModelYearDescending()
-        {
-            return _carDal.GetByModelYearDescending();
-        }
-
         public void GetCarAdd(Car car)
         {
-            _carDal.Add(car);
+            try
+            {
+                if (car.CarName.Length >= 2 && car.DailyPrice > 0)
+                {
+
+                    _carDal.Add(car);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(car.CarName+" İsimli araba eklendi");
+                    Console.ResetColor();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.Message);
+                Console.ResetColor();
+            }
+            finally
+            {
+
+                Console.WriteLine(car.Id + " " + car.CarName + " İşleminiz alındı");
+
+            }
         }
 
         public void GetCarDelete(Car car)
@@ -57,9 +54,21 @@ namespace Business.Concrete
 
         public void GetCarUpdate(Car car)
         {
+
             _carDal.Update(car);
         }
 
-        
+        public List<Car> GetCarsByBrandId(int brandId)
+        {
+
+            return _carDal.GetAll(c => c.BrandId == brandId);
+        }
+
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _carDal.GetAll(c => c.ColorId == colorId);
+        }
+
+
     }
 }
