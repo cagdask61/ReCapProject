@@ -1,37 +1,25 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.EnityFramework
 {
-    public class EfColorDal : IColorDal
+    public class EfColorDal : EfEntityRepositoryBase<Color, RentACarContext>, IColorDal
     {
-        public void Add(Color entity)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Delete(Color entity)
+        //Color a özel method
+        public List<Color> GetColorAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public Color Get(Expression<Func<Color, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Color entity)
-        {
-            throw new NotImplementedException();
+            using (RentACarContext context = new RentACarContext())
+            {
+                var result = context.Colors;
+                return result.ToList();
+            }
         }
     }
 }

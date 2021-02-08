@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,7 +30,7 @@ namespace Business.Concrete
 
                     _carDal.Add(car);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(car.CarName+" İsimli araba eklendi");
+                    Console.WriteLine(car.CarName + " İsimli araba eklendi");
                     Console.ResetColor();
                 }
             }
@@ -69,6 +70,10 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.ColorId == colorId);
         }
 
+        public List<CarDetailDto> GetCarDetail()
+        {
+            return _carDal.GetCarDetail();
 
+        }
     }
 }

@@ -10,21 +10,74 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+        
             CarManager carManager = new CarManager(new EfCarDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            Car car1 = new Car 
+
+            foreach (var cardetail in carManager.GetCarDetail())
             {
-                
-                Id=4,BrandId = 3, ColorId = 3, CarName = "Dodge", DailyPrice=800,ModelYear=1980, Description="Dene gör ve hisset." 
+                Console.WriteLine(cardetail.CarName + " " + cardetail.BrandName + " " + cardetail.ColorName + " " + cardetail.DailyPrice);
+            }
+
+            Car carAdd = new Car
+            {
+                Id = 1,
+                BrandId = 4,
+                ColorId = 4,
+                CarName = "Fiat",
+                DailyPrice = 400,
+                ModelYear = 2010,
+                Description = "Dene gör ve yaşa."
             };
-
-            carManager.GetCarAdd(car1);
-            carManager.GetCarUpdate(car1);
-            carManager.GetCarDelete(car1);
-            foreach (var cars in carManager.GetAll())
+            Car carUpdate = new Car
             {
-                Console.WriteLine(" + Araba ismi : "+ cars.CarName +" + Araba'nın açıklaması : "+cars.Description);
+                Id = 2,
+                BrandId = 2,
+                ColorId = 2,
+                CarName = "Dodge X",
+                DailyPrice = 900,
+                ModelYear = 1990,
+                Description = "Dene gör ve hisset..."
+            };
+            Car carDelete = new Car{Id = 1};
+
+            carManager.GetCarAdd(carAdd);
+            carManager.GetCarUpdate(carUpdate);
+            carManager.GetCarDelete(carDelete);
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(" + Araba ismi : " + car.CarName + " + Araba'nın açıklaması : " + car.Description);
+            }
+
+
+            Brand brandAdd = new Brand { Id = 10, BrandName = "C1" };
+            Brand brandUpdate = new Brand { Id = 1, BrandName = "A1..." };
+            Brand brandDelete = new Brand { Id = 9 };
+
+            brandManager.GetBrandAdd(brandAdd);
+            brandManager.GetBrandUpdate(brandUpdate);
+            brandManager.GetBrandDelete(brandDelete);
+            foreach (var brand in brandManager.GetBrandAll())
+            {
+                Console.WriteLine("Brand=> " + brand.Id + " " + brand.BrandName);
+            }
+
+            Color colorAdd = new Color { Id = 10, ColorName = "Dark purple" };
+            Color colorUpdate = new Color { Id = 9, ColorName = "Light Green" };
+            Color colorDeleted = new Color { Id = 2 };
+
+            colorManager.GetColorAdd(colorAdd);
+            colorManager.GetColorUpdate(colorUpdate);
+            colorManager.GetColorDelete(colorDeleted);
+
+            foreach (var color in colorManager.GetColorAll())
+            {
+                Console.WriteLine(color.Id +" "+color.ColorName);
             }
         }
+
+       
     }
 }
