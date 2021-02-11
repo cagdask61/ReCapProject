@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constans;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -15,62 +18,30 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        public void GetColorAdd(Color color)
+        public IResult GetColorAdd(Color color)
         {
-            try
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                _colorDal.Add(color);
-                Console.ResetColor();
-                Console.WriteLine("Başarıyla Eklendi");
-
-            }
-            catch (Exception error)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(error.Message);
-                Console.ResetColor();
-            }
+            
+            _colorDal.Add(color);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
-        public List<Color> GetColorAll()
+        public IDataResult<List<Color>> GetColorAll()
         {
-            return _colorDal.GetColorAll();
+            return new SuccessDataResult<List<Color>>(_colorDal.GetColorAll(),Messages.ColorsListed);
 
         }
 
-        public void GetColorDelete(Color color)
+        public IResult GetColorDelete(Color color)
         {
-            try
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                _colorDal.Delete(color);
-                Console.ResetColor();
-                Console.WriteLine("Başarıyla Silindi");
-            }
-            catch (Exception error)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(error.Message);
-                Console.ResetColor();
-            }
+            _colorDal.Delete(color);
+            return new SuccessResult(Messages.ColorDeleted);
+            
         }
 
-        public void GetColorUpdate(Color color)
+        public IResult GetColorUpdate(Color color)
         {
-            try
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                _colorDal.Update(color);
-                Console.ResetColor();
-                Console.WriteLine("Başarıyla Güncellendi");
-            }
-            catch (Exception error)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(error.Message);
-                Console.ResetColor();
-            }
+            _colorDal.Update(color);
+            return new SuccessResult(Messages.ColorUpdated);
         }
     }
 }

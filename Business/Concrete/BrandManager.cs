@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constans;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -15,62 +18,28 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void GetBrandAdd(Brand brand)
+        public IResult GetBrandAdd(Brand brand)
         {
-            try
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                _brandDal.Add(brand);
-                Console.ResetColor();
-                Console.WriteLine("Başarıyla Eklendi");
-            }
-            catch (Exception error)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(error.Message);
-                Console.ResetColor();
-            }
+            
+            _brandDal.Add(brand);
+            return new SuccessResult(Messages.BrandAdded);
         }
 
-        public List<Brand> GetBrandAll()
+        public IDataResult<List<Brand>> GetBrandAll()
         {
-            return _brandDal.GetBrandAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetBrandAll(),Messages.BrandsListed);
         }
 
-        public void GetBrandDelete(Brand brand)
+        public IResult GetBrandDelete(Brand brand)
         {
-            try
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                _brandDal.Delete(brand);
-                Console.ResetColor();
-                Console.WriteLine("Başarıyla Silindi");
-            }
-            catch (Exception error)
-            {
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(error.Message);
-                Console.ResetColor();
-            }
+            _brandDal.Delete(brand);
+            return new SuccessResult(Messages.BrandDeleted);
         }
 
-        public void GetBrandUpdate(Brand brand)
+        public IResult GetBrandUpdate(Brand brand)
         {
-            try
-            {
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                _brandDal.Update(brand);
-                Console.ResetColor();
-                Console.WriteLine("Başarıyla Güncellendi");
-            }
-            catch (Exception error)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(error.Message);
-                Console.ResetColor();
-            }
+            _brandDal.Update(brand);
+            return new SuccessResult(Messages.BrandUpdated);
         }
     }
 }
