@@ -27,13 +27,13 @@ namespace Business.Concrete
         public IResult GetCarAdd(Car car)
         {
             
-            if (car.CarName.Length < 2 && car.DailyPrice < 0)
+            if (car.CarName.Length > 2 && car.DailyPrice > 0)
             {
-                return new SuccessResult(Messages.CarNameInValid + Messages.CarPriceInValid);
+                _carDal.Add(car);
+                return new SuccessResult(Messages.CarAdded);
             }
 
-            _carDal.Add(car);
-            return new SuccessResult(Messages.CarAdded);
+            return new ErrorResult(false,Messages.CarNameInValid);
 
         }
 

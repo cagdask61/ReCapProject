@@ -15,22 +15,23 @@ namespace ConsoleApp
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            
+
+            carManager.GetCarDelete(new Car { Id=5});
 
             foreach (var car in carManager.GetCarDetail().Data)
             {
                 Console.WriteLine(car.CarName+"/"+car.BrandName+"/"+car.ColorName+"/"+car.DailyPrice);
             }
 
-            foreach (var brand in brandManager.GetBrandAll().Data)
-            {
-                Console.WriteLine(brand.BrandName);
-            }
+            //foreach (var brand in brandManager.GetBrandAll().Data)
+            //{
+            //    Console.WriteLine(brand.BrandName);
+            //}
 
-            foreach (var color in colorManager.GetColorAll().Data)
-            {
-                Console.WriteLine(color.ColorName);
-            }
+            //foreach (var color in colorManager.GetColorAll().Data)
+            //{
+            //    Console.WriteLine(color.ColorName);
+            //}
 
         }
     }
