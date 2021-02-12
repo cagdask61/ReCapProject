@@ -82,7 +82,7 @@ namespace DataAccess.Concrete.InMemory
             carUpdate.DailyPrice = car.DailyPrice;
             carUpdate.ModelYear = car.ModelYear;
             carUpdate.Description = car.Description;
-            Console.WriteLine(car.Id + " Id li araba Güncellendi");
+            Console.WriteLine(car.Id + "");
         }
     }
 }
