@@ -36,6 +36,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandDeleted);
         }
 
+        public IDataResult<Brand> GetBrandId(int Id)
+        {
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.Id == Id), Messages.BrandById);
+        }
+
         public IResult GetBrandUpdate(Brand brand)
         {
             _brandDal.Update(brand);
