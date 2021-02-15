@@ -71,5 +71,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Car>(_carDal.Get(c=>c.Id == carId), Messages.CarById);
         }
+
+        public IDataResult<Car> GetCarSearch(string carName)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(p=>p.CarName == carName),Messages.CarsListed);
+        }
     }
 }

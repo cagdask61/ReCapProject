@@ -25,5 +25,7 @@ namespace Business.Abstract
 
         IDataResult<List<CarDetailDto>> GetCarDetail();
 
+        IDataResult<Car> GetCarSearch(string carName);
+
     }
 }

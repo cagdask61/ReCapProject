@@ -75,6 +75,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcarsearch")]
+        public IActionResult CarSearch(string carName)
+        {
+            var result = _carService.GetCarSearch(carName);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("getcaradd")]
         public IActionResult CarAdd(Car addCar)
         {
