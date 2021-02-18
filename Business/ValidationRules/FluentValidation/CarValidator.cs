@@ -16,6 +16,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.DailyPrice).GreaterThan(0);
             RuleFor(c => c.CarName).Must(StartWithMy).WithMessage("Araba ismi My ile başlamalıdır!");
             RuleFor(c => c.ModelYear).NotEmpty();
+            RuleFor(c => c.Description).NotEmpty();
             RuleFor(c => c.Description).Length(10, 500);
 
         }
