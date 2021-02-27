@@ -6,7 +6,7 @@ namespace Business.Constans
 {
     public static class Messages
     {
-        public static string CarAdded = " Araba başarıyla eklendi. ";
+        public static string CarAdded = " isimli Araba başarıyla eklendi.";
         public static string CarDeleted = " Araba başarıyla silindi. ";
         public static string CarUpdated = " Araba başarıyla güncellendi. ";
         public static string CarNameInValid = " Araba ismi geçersiz. ";
@@ -46,5 +46,12 @@ namespace Business.Constans
         public static string CustomerUpdated = " Müşteri başarıyla güncellendi. ";
         public static string CustomerListed = " Müşteriler başarıyla listelendi.";
         public static string CustomerSingle = " İstediğiniz müşteri bulundu.";
+
+        public static string CarNameAlreadyExists = "Lütfen başla bir isim giriniz. Bu isim alınmıştır.";
+
+        public static string CarImageAdded = "Arabznızın fotoğrafı başarıyla eklendi";
+        public static string CarImageDeleted = "Arabznızın fotoğrafı silindi eklendi";
+        public static string CarImageUpdated = "Arabznızın fotoğrafı güncellendi eklendi";
+        public static string CarImageLimitExceeded = "Arabanızın en fazla 5 fotoğrafı olabilir";
     }
 }
