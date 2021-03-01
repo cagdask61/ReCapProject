@@ -26,6 +26,7 @@ namespace DataAccess.Concrete.EnityFramework
                                UserId = us.Id,
                                CarName = ca.CarName,
                                UserName = us.FirstName,
+                               UserLastName = us.LastName,
                                DailyPrice = ca.DailyPrice,
                                CompanyName = cu.CompanyName,
                                RentDate = re.RentDate,
