@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constans;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
@@ -28,7 +31,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
         }
 
+        [SecuredOperation("admin,user,moderator")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult GetCarAdd(Car car)
         {
             var result = BusinessRules.Run(CheckCarNameExists(car.CarName));
@@ -42,12 +47,14 @@ namespace Business.Concrete
 
         }
 
+        [SecuredOperation("admin")]
         public IResult GetCarDelete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [SecuredOperation("admin,moderator")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult GetCarUpdate(Car car)
         {
@@ -61,6 +68,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarUpdated);
         }
 
+        [CacheAspect(duration:15)]
         public IDataResult<Car> GetCarsByBrandId(int brandId)
         {
 
@@ -98,6 +106,10 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-      
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

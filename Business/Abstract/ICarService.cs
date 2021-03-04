@@ -27,5 +27,6 @@ namespace Business.Abstract
 
         IDataResult<Car> GetCarSearch(string carName);
 
+        IResult AddTransactionalTest(Car car);
     }
 }

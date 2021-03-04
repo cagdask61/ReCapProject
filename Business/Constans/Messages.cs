@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constans
@@ -60,6 +61,7 @@ namespace Business.Constans
         public static string PasswordError = "Girilen şifre hatalı";
         public static string SuccessfulLogin = "Başarıyla giriş yaptınız";
         public static string UserAlreadyExists = "Girilen değerde kullanıcı var";
-        internal static string CreateAccessToken = "Başarıyla token oluşturuldu";
+        public  static string CreateAccessToken = "Başarıyla token oluşturuldu";
+        public static string  AuthorizationDenied = "Yetkiniz yok";
     }
 }
