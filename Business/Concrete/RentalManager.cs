@@ -28,7 +28,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetByRentalDetail()
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetail(), Messages.RentalListed);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetail());
         }
 
         public IDataResult<Rental> GetRentalById(int rentalId)
@@ -39,6 +39,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(RentalValidator))]
         public IResult RentalAdd(Rental rental)
         {
+
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentalAdded);
         }
@@ -54,5 +55,6 @@ namespace Business.Concrete
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdated);
         }
+
     }
 }

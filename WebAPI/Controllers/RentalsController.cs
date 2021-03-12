@@ -37,10 +37,7 @@ namespace WebAPI.Controllers
             var result = _rentalService.GetByRentalDetail();
             if (result.Success)
             {
-                foreach (var rental in result.Data)
-                {
-                    return Ok(rental.CarId +rental.CarName+rental.CompanyName+rental.DailyPrice+rental.UserName);
-                }
+                return Ok(result);
             }
             return BadRequest(result);
         }
