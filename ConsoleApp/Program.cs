@@ -17,7 +17,7 @@ namespace ConsoleApp
             ColorManager colorManager = new ColorManager(new EfColorDal());
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            var result = rentalManager.GetByRentalDetail();
+            var result = rentalManager.GetRentalDetail();
             if (result.Success == true)
             {
                 foreach (var rental in result.Data)
@@ -30,7 +30,7 @@ namespace ConsoleApp
                 Console.WriteLine(Messages.NotFound);
             }
 
-            foreach (var rentalcar in rentalManager.GetByRentalDetail().Data)
+            foreach (var rentalcar in rentalManager.GetRentalDetail().Data)
             {
                 Console.WriteLine(rentalcar.CarName);
             }
