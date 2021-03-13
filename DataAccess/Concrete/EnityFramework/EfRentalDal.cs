@@ -23,19 +23,20 @@ namespace DataAccess.Concrete.EnityFramework
                            join us in context.Users on cu.UserId equals us.Id
                            select new RentalDetailDto
                            {
-                              Id = re.Id,
-                              BrandName = br.BrandName,
-                              ColorName = co.ColorName,
-                              CarName = ca.CarName,
-                              FirstName = us.FirstName,
-                              LastName = us.LastName,
-                              CompanyName = cu.CompanyName,
-                              ModelYear = ca.ModelYear,
-                              DailyPrice = ca.DailyPrice,
-                              RentDate = re.RentDate,
-                              ReturnDate = re.ReturnDate,
-                              Description = ca.Description
+                               Id = re.Id,
+                               BrandName = br.BrandName,
+                               ColorName = co.ColorName,
+                               CarName = ca.CarName,
+                               FirstName = us.FirstName,
+                               LastName = us.LastName,
+                               CompanyName = cu.CompanyName,
+                               ModelYear = ca.ModelYear,
+                               DailyPrice = ca.DailyPrice,
+                               RentDate = re.RentDate,
+                               ReturnDate = re.ReturnDate,
+                               Description = ca.Description
                            };
+                
                 return join.ToList();
             }
         }

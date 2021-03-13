@@ -30,7 +30,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>> GetBrandAll()
         {
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetBrandAll());
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
         public IResult GetBrandDelete(Brand brand)

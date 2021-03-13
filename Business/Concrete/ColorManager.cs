@@ -29,7 +29,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Color>> GetColorAll()
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetColorAll(),Messages.ColorsListed);
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
 
         }
 
