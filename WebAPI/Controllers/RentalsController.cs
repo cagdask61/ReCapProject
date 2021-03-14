@@ -56,6 +56,21 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        //
+        [Route("getrentalby/{rentalId}")]
+        [HttpGet()]
+        public IActionResult RentalByIdRoute(int rentalId)
+        {
+            var result = _rentalService.GetRentalById(rentalId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+       
+
 
         [HttpPost("getrentaladd")]
         public IActionResult RenatalAdd(Rental addRental)

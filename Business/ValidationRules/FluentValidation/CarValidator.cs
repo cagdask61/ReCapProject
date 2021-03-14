@@ -14,16 +14,16 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.CarName).Length(2, 50);
             RuleFor(c => c.DailyPrice).NotEmpty();
             RuleFor(c => c.DailyPrice).GreaterThan(0);
-            RuleFor(c => c.CarName).Must(StartWithMy).WithMessage("Araba ismi My ile başlamalıdır!");
+            //RuleFor(c => c.CarName).Must(StartWithMy).WithMessage("Araba ismi My ile başlamalıdır!");
             RuleFor(c => c.ModelYear).NotEmpty();
             RuleFor(c => c.Description).NotEmpty();
-            RuleFor(c => c.Description).Length(10, 500);
+            RuleFor(c => c.Description).Length(5, 500);
 
         }
-        private bool StartWithMy(string arg)
-        {
-            return arg.StartsWith("My");
-        }
+        //private bool StartWithMy(string arg)
+        //{
+        //    return arg.StartsWith("My");
+        //}
 
         
     }

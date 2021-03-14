@@ -25,18 +25,41 @@ namespace WebAPI.Controllers
         [HttpGet("getbrandall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(1000);
             var result = _brandService.GetBrandAll();
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
-
         }
+        //
+        [Route("getbrands/brandsall")]
+        [HttpGet()]
+        public IActionResult GetBrandsAllRoute()
+        {
+            var result = _brandService.GetBrandAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
 
         [HttpGet("getbrandbyid")]
         public IActionResult BrandById(int brandId)
+        {
+            var result = _brandService.GetBrandId(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        //
+        [Route("getbrandbyid/{brandId}")]
+        [HttpGet()]
+        public IActionResult BrandByIdRoute(int brandId)
         {
             var result = _brandService.GetBrandId(brandId);
             if (result.Success)

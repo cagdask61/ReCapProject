@@ -28,7 +28,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
         [SecuredOperation("admin,user,moderator")]
@@ -41,7 +41,7 @@ namespace Business.Concrete
             {
                 return result;
             }
-            
+
             _carDal.Add(car);
             return new SuccessResult();
 
@@ -68,16 +68,17 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarUpdated);
         }
 
-        [CacheAspect(duration:15)]
-        public IDataResult<Car> GetCarsByBrandId(int brandId)
+        [CacheAspect(duration: 15)]
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
 
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.BrandId == brandId));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId));
         }
 
-        public IDataResult<Car> GetCarsByColorId(int colorId)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.ColorId == colorId));
+
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.ColorId == colorId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetail()
@@ -88,22 +89,17 @@ namespace Business.Concrete
 
         public IDataResult<Car> GetCarId(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c=>c.Id == carId), Messages.CarById);
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == carId), Messages.CarById);
         }
 
-        public IDataResult<Car> GetCarSearch(string carName)
+        public IDataResult<List<Car>> GetCarSearch(string carName)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(p=>p.CarName == carName),Messages.CarsListed);
-        }
-
-        private IResult CheckCarNameExists(string carName)
-        {
-            var result = _carDal.GetAll(p=>p.CarName == carName).Any();
-            if (result)
+            var result = BusinessRules.Run(CheckCarNameIsNull(carName));
+            if (result != null)
             {
-                return new ErrorResult(Messages.CarNameAlreadyExists);
+                return (IDataResult<List<Car>>)result;
             }
-            return new SuccessResult();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.CarName == carName));
         }
 
         [TransactionScopeAspect]
@@ -111,5 +107,26 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+        private IResult CheckCarNameExists(string carName)
+        {
+            var result = _carDal.GetAll(p => p.CarName == carName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.CarNameAlreadyExists);
+            }
+            return new SuccessResult();
+        }
+
+        private IDataResult<List<Car>> CheckCarNameIsNull(string valueName)
+        {
+            var result = string.IsNullOrEmpty(valueName);
+            if (result)
+            {
+                return new ErrorDataResult<List<Car>>();
+            }
+            return new SuccessDataResult<List<Car>>();
+        }
+        
     }
 }

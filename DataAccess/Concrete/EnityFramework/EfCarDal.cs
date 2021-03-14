@@ -34,5 +34,6 @@ namespace DataAccess.Concrete.EnityFramework
                 return Join.ToList();
             }
         }
+
     }
 }

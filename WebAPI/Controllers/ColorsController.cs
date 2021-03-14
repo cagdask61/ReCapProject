@@ -29,11 +29,35 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
-
         }
+        //
+        [Route("getcolors/colorsall")]
+        [HttpGet()]
+        public IActionResult GetColorsAllRoute()
+        {
+            var result = _colorService.GetColorAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
 
         [HttpGet("getcolorbyid")]
         public IActionResult ColorById(int colorId)
+        {
+            var result = _colorService.GetColorId(colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        //
+        [Route("getcolorbyid/{colorId}")]
+        [HttpGet()]
+        public IActionResult ColorByIdRoute(int colorId)
         {
             var result = _colorService.GetColorId(colorId);
             if (result.Success)
