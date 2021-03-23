@@ -18,8 +18,8 @@ namespace DataAccess.Concrete.EnityFramework
             using (RentACarContext context = new RentACarContext())
             {
                 var Join = from c in context.Cars
-                           join co in context.Colors on c.Id equals co.Id
-                           join b in context.Brands on c.Id equals b.Id
+                           join co in context.Colors on c.ColorId equals co.Id
+                           join b in context.Brands on c.BrandId equals b.Id
                            select new CarDetailDto
                            {
                                ColorName = co.ColorName,
